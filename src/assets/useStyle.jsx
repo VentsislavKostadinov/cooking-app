@@ -6,5 +6,9 @@ export const useStyles = createUseStyles({
     },
     imageTopPositioning: {
      left: "15%"
+    },
+
+    footer: {
+        bottom: "0"
     }
  })

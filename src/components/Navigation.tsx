@@ -6,24 +6,21 @@ import { Content } from "../assets/Content";
 import { useStyles } from "../assets/useStyle";
 
 const Navigation = (props: any) => {
-
   const classes = useStyles();
 
   const navigationContent: Content = {
-
     navigation: {
-      navMaintitle: 'CookWell',
-      navSecondaryTitle: 'by devexperts',
+      navMaintitle: "CookWell",
+      navSecondaryTitle: "by devexperts",
       fieldsetLabel: "filter ingredients:",
-      filterIngredientsText: "Filter ingredients"
+      filterIngredientsText: "Filter ingredients",
     },
   };
 
   return (
     <Navbar
-      bg="light"
       expand="lg"
-      className={`rounded-bottom ${classes.navbarShadow}`}
+      className={`bg-white rounded-bottom ${classes.navbarShadow}`}
     >
       <Container>
         <Navbar.Brand href="#home" className="position-relative">
@@ -39,7 +36,9 @@ const Navigation = (props: any) => {
             <div className="col-md m-auto">
               <div className="pt-2 fs-6">
                 {navigationContent.navigation.navMaintitle}
-                <p className="fst-italic">{navigationContent.navigation.navSecondaryTitle}</p>
+                <p className="fst-italic">
+                  {navigationContent.navigation.navSecondaryTitle}
+                </p>
               </div>
             </div>
           </div>
@@ -47,22 +46,15 @@ const Navigation = (props: any) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Form className="d-flex ms-auto">
-            {props.value !== "" ? (
-              <fieldset className="reset border p-2">
+            <fieldset
+              className={props.value !== "" ? "reset border p-2" : null}
+            >
+              {props.value !== "" ? (
                 <legend className="reset w-auto fs-6">
-                 {navigationContent.navigation.fieldsetLabel}
+                  {navigationContent.navigation.fieldsetLabel}
                 </legend>
-                <Form.Control
-                  type="search"
-                  placeholder={props.clicked ? "" : navigationContent.navigation.filterIngredientsText}
-                  className="me-2"
-                  aria-label="Search"
-                  onChange={props.handleChange}
-                  onClick={props.handleClick}
-                  value={props.value}
-                />
-              </fieldset>
-            ) : (
+              ) : null}
+
               <Form.Control
                 type="search"
                 placeholder={navigationContent.navigation.filterIngredientsText}
@@ -72,7 +64,7 @@ const Navigation = (props: any) => {
                 onClick={props.handleClick}
                 value={props.value}
               />
-            )}
+            </fieldset>
           </Form>
         </Navbar.Collapse>
       </Container>
