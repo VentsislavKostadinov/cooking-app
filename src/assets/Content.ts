@@ -5,5 +5,13 @@ export interface Content {
       navSecondaryTitle: string;
       fieldsetLabel: string;
       filterIngredientsText: string
-    };
+    }
+  }
+
+  export interface Footer {
+
+    footer: {
+      title: string,
+      subtitle: string
+     }
   }
