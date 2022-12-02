@@ -20,7 +20,7 @@ const Navigation = (props: any) => {
   return (
     <Navbar
       expand="lg"
-      className={`bg-white rounded-bottom ${classes.navbarShadow}`}
+      className={`bg-white rounded-bottom ${classes.boxShadow}`}
     >
       <Container>
         <Navbar.Brand href="#home" className="position-relative">
