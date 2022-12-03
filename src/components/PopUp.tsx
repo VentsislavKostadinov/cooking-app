@@ -4,17 +4,16 @@ import { Modal } from "react-bootstrap";
 const PopUp = (props: any) => {
   return (
     <Modal show={props.show} onHide={props.handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+      <Modal.Header closeButton className="border-bottom-0">
+        <Modal.Title></Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ol>
+        <ol className="custom-counter list-unstyled">
           {props.recipeDescription.map((el: string, i: number) => {
-            return <li key={i}>{el}</li>;
+            return <li key={i} className="mb-2">{el}</li>;
           })}
         </ol>
       </Modal.Body>
-      <Modal.Footer></Modal.Footer>
     </Modal>
   );
 };
