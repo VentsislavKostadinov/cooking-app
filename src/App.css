@@ -1,3 +1,17 @@
 .reset {
   all: revert;
 }
+
+.custom-counter li {
+  counter-increment: step-counter;
+}
+.custom-counter li::before {
+  content: counter(step-counter);
+  margin-right: 1.25rem;
+  font-size: 80%;
+  background-color: #3593E9;
+  color: white;
+  font-weight: bold;
+  padding: 0.19rem 0.5rem;
+  border-radius: 0.68rem;
+}
