@@ -27,12 +27,12 @@ const Homepage = () => {
 
     let ingredientsSearch = [];
     ingredientsSearch = ingredients.filter((data) => {
-      return data.name.toLowerCase().search(value.toLowerCase()) != -1;
+      return data.name.toLowerCase().search(value.toLowerCase()) !== -1;
     });
 
     let recipeIngredientsSearch = [];
     recipeIngredientsSearch = recipeIngredients.filter((data) => {
-      return data.title.toLowerCase().search(value.toLowerCase()) != -1;
+      return data.title.toLowerCase().search(value.toLowerCase()) !== -1;
     });
     setFilteredData(recipeIngredientsSearch);
   };
@@ -40,7 +40,7 @@ const Homepage = () => {
   return (
     <>
       <Container>
-        <Navigation handleChange={handleChange} value={value} />
+        <Navigation handleChange={handleChange} value={value} items={ingredients} />
       </Container>
       <Container className="mt-5 text-center">
         <Row className="gx-md-3 gx-4">
@@ -53,7 +53,7 @@ const Homepage = () => {
               >
                 <h4>{recipe.title}</h4>
                 <p className="text-start">{recipe.timeToPrepare}</p>
-                <img src={recipe.image} alt="recipe-image" />
+                <img src={recipe.image} alt="image" />
                 <ul className="mt-3">
                   {recipe?.ingredients?.map((recipeElement: string, index: number) => {
                     return (
@@ -74,7 +74,7 @@ const Homepage = () => {
                     onClick={() => {
                       handleShow();
                       setRecipeDescription([]);
-                      recipe?.preparationMethod?.filter((preparationText) => {
+                      recipe?.preparationMethod?.filter((preparationText: any) => {
                         setRecipeDescription((item) => [
                           ...item,
                           preparationText.text,

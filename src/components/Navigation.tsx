@@ -56,6 +56,7 @@ const Navigation = (props: any) => {
               ) : null}
 
               <Form.Control
+                list="ingredients"
                 type="search"
                 placeholder={navigationContent.navigation.filterIngredientsText}
                 className="me-2"
@@ -64,6 +65,11 @@ const Navigation = (props: any) => {
                 onClick={props.handleClick}
                 value={props.value}
               />
+              <datalist id="ingredients">
+                {props.items.map((ingrediment: any, index: number) => (
+                  <option value={ingrediment.name} key={index} />
+                ))}
+              </datalist>
             </fieldset>
           </Form>
         </Navbar.Collapse>
