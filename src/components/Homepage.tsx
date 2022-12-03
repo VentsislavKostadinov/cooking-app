@@ -14,8 +14,8 @@ const Homepage = () => {
   const classes = useStyles();
   const [value, setValue] = useState<string>("");
   const [recipeDescription, setRecipeDescription] = useState<string[]>([]);
+  const [steps, setSteps] = useState<number[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>(recipeIngredients);
-
   /* Modal */
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -37,10 +37,20 @@ const Homepage = () => {
     setFilteredData(recipeIngredientsSearch);
   };
 
+  const popUpData = {
+    template1: {
+      items: recipeDescription,
+    },
+  };
+
   return (
     <>
       <Container>
-        <Navigation handleChange={handleChange} value={value} items={ingredients} />
+        <Navigation
+          handleChange={handleChange}
+          value={value}
+          items={ingredients}
+        />
       </Container>
       <Container className="mt-5 text-center">
         <Row className="gx-md-3 gx-4">
@@ -55,16 +65,18 @@ const Homepage = () => {
                 <p className="text-start">{recipe.timeToPrepare}</p>
                 <img src={recipe.image} alt="image" />
                 <ul className="mt-3">
-                  {recipe?.ingredients?.map((recipeElement: string, index: number) => {
-                    return (
-                      <li
-                        key={index}
-                        className={`text-start ${classes.listStyleType}`}
-                      >
-                        {recipeElement}
-                      </li>
-                    );
-                  })}
+                  {recipe?.ingredients?.map(
+                    (recipeElement: string, index: number) => {
+                      return (
+                        <li
+                          key={index}
+                          className={`text-start ${classes.listStyleType}`}
+                        >
+                          {recipeElement}
+                        </li>
+                      );
+                    }
+                  )}
                 </ul>
                 <div className="mt-4">
                   <img
@@ -74,25 +86,32 @@ const Homepage = () => {
                     onClick={() => {
                       handleShow();
                       setRecipeDescription([]);
-                      recipe?.preparationMethod?.filter((preparationText: any) => {
-                        setRecipeDescription((item) => [
-                          ...item,
-                          preparationText.text,
-                        ]);
-                      });
+                      setSteps([]);
+                      recipe?.preparationMethod?.filter(
+                        (preparationText: any, index: number) => {
+                          setSteps((step) => [...step, index + 1]);
+                          setRecipeDescription((item) => [
+                            ...item,
+                            preparationText.text
+                          ]);
+                        }
+                      );
                     }}
                   />
                 </div>
+
                 <PopUp
                   show={show}
                   handleClose={handleClose}
-                  recipeDescription={recipeDescription}
+                  popUpData={popUpData}
                 />
               </Col>
             );
           })}
 
-          {filteredData.length === 0 && <h3 className="text-center">No result data</h3>}
+          {filteredData.length === 0 && (
+            <h3 className="text-center">No result data</h3>
+          )}
         </Row>
       </Container>
       <FooterComponent />

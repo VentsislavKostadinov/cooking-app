@@ -2,16 +2,18 @@
   all: revert;
 }
 
-.custom-counter li {
+ol {
+  counter-reset: section;
+}
+ol li {
   counter-increment: step-counter;
 }
-.custom-counter li::before {
+ol li::before {
   content: counter(step-counter);
-  margin-right: 1.25rem;
-  font-size: 80%;
-  background-color: #3593E9;
-  color: white;
-  font-weight: bold;
-  padding: 0.19rem 0.5rem;
-  border-radius: 0.68rem;
+}
+
+.modal-backdrop
+{
+  background: rgba(0, 0, 0, 0.4) !important;
+    opacity:0.5 !important;
 }

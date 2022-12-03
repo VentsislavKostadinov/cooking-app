@@ -23,4 +23,22 @@ export const useStyles = createUseStyles({
       cursor: "pointer",
     },
   },
+
+  ol: {
+    listStyle: "none",
+  },
+  li: {
+    display: "flex",
+
+    "&:before": {
+      fontWeight: "bold",
+      marginRight: "0.5rem",
+      backgroundColor: "#3593E9",
+      padding: "0.2rem 0.5rem",
+      borderRadius: "50%",
+      height: "1.625rem",
+      lineHeight: "1.2",
+      color: "white",
+    },
+  },
 });
