@@ -10,24 +10,24 @@ const PopUp = (props: any) => {
         <Modal.Title></Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ol className={classes.ol}>
           {Object.keys(props.popUpData).map((data, index) => {
             return (
               <>
                 {props.popUpData[data].items.map(
                   (item: string, index: number) => {
                     return (
+                      <ol className={classes.ol} key={index}>
                       <li key={index} className={classes.li}>
                         {" "}
                         {item}
                       </li>
+                      </ol>
                     );
                   }
                 )}
               </>
             );
           })}
-        </ol>
       </Modal.Body>
     </Modal>
   );

@@ -1,12 +1,31 @@
-// npm run test
-
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const { SeleniumServer } = require('selenium-webdriver/remote');
 const assert = require('chai').assert;
-
 let driver = require('chromedriver');
-//const { get } = require('selenium-webdriver/http');
 
+const testNames = {
+    describeName: "Cooking app simple tests",
+    appTitle: "Read app page title",
+    brandTitle: "Read brand title",
+    searchPastaKeyword: "type 'pasta' ingredients word in search input",
+    searchBlackBeansKeyword: "type 'black beans' ingredients word in search input",
+    noResultDataSearchTestKeyword: "No search result on keyword 'black beans'"
+}
+
+const keywords = {
+    pageTitle: "Cooking app",
+    brandTitle: "devexperts",
+    ingredients: {
+        pasta: "pasta",
+        test: "test"
+    }
+} 
+
+const selectors = {
+    brandTitleSelector: ".fst-italic",
+    searchInput: ".form-control",
+    cards: ".p-4"
+}
 
 beforeEach(async () => {
 
@@ -23,13 +42,32 @@ afterEach(async () => {
     await driver.close();
 })
 
-describe("Read app title", () => {
 
-    it("Read app page title", async () => {
+describe(testNames.describeName, async () => {
+   
+
+    it.skip(testNames.appTitle, async () => {
           const pageTitle = await driver.getTitle();
-          console.log("pageTitle------ ", pageTitle)
-          //assert.equal(pageTitle, "Cooking app");
-    })
+          assert.equal(pageTitle, keywords.pageTitle);
+    });
+
+    it.skip(testNames.brandTitle, async () => {
+        const brandTitle = await driver.findElement(By.css(selectors.brandTitleSelector)).getText();
+        assert.include(brandTitle, keywords.brandTitle);
+    });
+
+    it.skip(testNames.searchPastaKeyword, async () => {
+
+       await driver.findElement(By.css(selectors.searchInput)).sendKeys(keywords.ingredients.pasta);
+       const cards = await driver.findElements(By.css(selectors.cards));
+       assert.lengthOf(cards, 3);
+    });
+   
+    it(testNames.noResultDataSearchTestKeyword, async () => {
+        await driver.findElement(By.css(selectors.searchInput)).sendKeys(keywords.ingredients.test);
+        const cards = await driver.findElements(By.css(selectors.cards));
+        assert.lengthOf(cards, 0);
+    });
 })
 
 
@@ -40,6 +78,7 @@ describe.skip('App title', async () => {
 
         let titleName = await driver.findElement(By.id('brand-home'));
         titleName = await driver.getTitle();
+        assert.includes(titleName)
         console.log('Title name:', titleName);
 
 

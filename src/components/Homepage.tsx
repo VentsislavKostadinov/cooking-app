@@ -32,7 +32,15 @@ const Homepage = () => {
 
     let recipeIngredientsSearch = [];
     recipeIngredientsSearch = recipeIngredients.filter((data) => {
-      return data.title.toLowerCase().search(value.toLowerCase()) !== -1;
+      const ingredientsInCards = data.ingredients.filter((bulletWords) => {
+        return bulletWords.toLowerCase().search(value.toLowerCase()) !== -1;
+      });
+
+      const findIngrediendsTitleAndBullets = ingredientsInCards.find((el) => {
+        return el.search(value.toLowerCase()) !== -1;
+      });
+
+      return findIngrediendsTitleAndBullets;
     });
     setFilteredData(recipeIngredientsSearch);
   };
@@ -92,7 +100,7 @@ const Homepage = () => {
                           setSteps((step) => [...step, index + 1]);
                           setRecipeDescription((item) => [
                             ...item,
-                            preparationText.text
+                            preparationText.text,
                           ]);
                         }
                       );
