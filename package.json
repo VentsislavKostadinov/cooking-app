@@ -21,7 +21,8 @@
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "cross-env ./node_modules/.bin/mocha ./src/e2e/test.js --timeout 20000"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +43,12 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "chai": "^4.2.0",
+    "chromedriver": "^108.0.0",
+    "cross-env": "^7.0.3",
+    "geckodriver": "^1.19.1",
+    "mocha": "^8.0.1",
+    "selenium-webdriver": "^4.0.0-alpha.7"
   }
 }
