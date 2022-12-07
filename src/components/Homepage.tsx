@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 import FooterComponent from "./FooterComponent";
 import { Container, Row, Col } from "react-bootstrap";
 import api from "../assets/cooking-api.json";
-import { useStyles } from "../assets/useStyle";
+import { useStyles } from "../style/useStyle";
 import hyperlinkIcon from "../assets/images/hyperlink-icon.png";
 import PopUp from "./PopUp";
 

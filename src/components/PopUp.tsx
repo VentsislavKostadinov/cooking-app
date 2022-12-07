@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { useStyles } from "../assets/useStyle";
+import { useStyles } from "../style/useStyle";
 
 const PopUp = (props: any) => {
   const classes = useStyles();

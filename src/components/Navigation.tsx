@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Navbar, Form } from "react-bootstrap";
 import tomatoImage from "../assets/images/tomato.png";
 import tomatoCap from "../assets/images/tomato-cap.png";
-import { Content } from "../assets/Content";
-import { useStyles } from "../assets/useStyle";
+import { Content } from "../Inteface/Content";
+import { useStyles } from "../style/useStyle";
 
 const Navigation = (props: any) => {
   const classes = useStyles();

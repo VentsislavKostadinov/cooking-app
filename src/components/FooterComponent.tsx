@@ -1,7 +1,7 @@
 import React from "react";
-import { useStyles } from "../assets/useStyle";
+import { useStyles } from "../style/useStyle";
 import {Container} from "react-bootstrap";
-import { Footer } from "../assets/Content";
+import { Footer } from "../Inteface/Content";
 
 const FooterComponent = () => {
     const classes = useStyles();
